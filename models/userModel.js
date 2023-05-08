@@ -15,16 +15,14 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+      unique: true,
     },
     phone: {
       type: String,
       required: true,
+      unique: true,
     },
     address: {
-      type: {},
-      required: true,
-    },
-    answer: {
       type: String,
       required: true,
     },
@@ -36,4 +34,5 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("users", userSchema);
+const UserModel = mongoose.model("users", userSchema);
+export default UserModel;
