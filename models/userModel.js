@@ -15,24 +15,25 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      unique: true,
     },
     phone: {
       type: String,
       required: true,
-      unique: true,
     },
     address: {
+      type: {},
+      required: true,
+    },
+    answer: {
       type: String,
       required: true,
     },
     role: {
-      type: String,
+      type: Number,
       default: 0,
     },
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("users", userSchema);
-export default User;
+export default mongoose.model("users", userSchema);
