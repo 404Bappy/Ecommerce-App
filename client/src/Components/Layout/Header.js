@@ -37,11 +37,6 @@ const Header = () => {
                   Link
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/" className="nav-link disabled">
-                  Disabled
-                </NavLink>
-              </li>
             </ul>
           </div>
         </div>
