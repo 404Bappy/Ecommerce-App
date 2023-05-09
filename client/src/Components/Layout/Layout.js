@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 
-const Layout = () => {
-    return (
-        <div>
-            <h1>Layout</h1>
-        </div>
-    );
+const Layout = (props) => {
+  return (
+    <div>
+      <Header />
+      <main style={{minHeight: "80vh"}}>{props.children}</main>
+      <Footer  />
+    </div>
+  );
 };
 
 export default Layout;
