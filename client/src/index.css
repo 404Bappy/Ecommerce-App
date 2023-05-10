@@ -37,8 +37,70 @@ font-family: 'Poppins', sans-serif; */
   color: #ffffff;
 }
 
-.lgo{
-  font-size:x-large;
+.lgo {
+  font-size: x-large;
   margin-bottom: 4px;
-  color:white
+  color: white;
+}
+
+/*==========> Footer CSS <========== */
+.footer {
+  color: rgb(4, 0, 0);
+  padding: 25px;
+  background: linear-gradient(to right, #2fd02f, #5cb55c);
+}
+
+.footer a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+
+.footer a:hover {
+  color: darkblue;
+  border-bottom: 1px solid darkblue;
+}
+
+/*==========> PAGE NOT FOUND 404 CSS <========== */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 100px;
+}
+.container h1 {
+  font-size: 72px;
+  margin-bottom: 20px;
+  color: #d33;
+}
+.container p {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #333;
+}
+.container a {
+  color: #fff;
+  background-color: #d33;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+.container a:hover {
+  background-color: #b30000;
+}
+
+/* =========>  Contact Us <========== */
+.contactus {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
