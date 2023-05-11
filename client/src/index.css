@@ -18,7 +18,7 @@ font-family: 'Poppins', sans-serif; */
   box-shadow: 0 8px 6px -6px gray;
   --webkit-box-shadow: 0 8px 6px -6px gray;
   border-bottom: 0.3px solid gray !important;
-  background-color: #5cb55c;
+  background-color: #5cb55c; 
 }
 
 .nav-link {

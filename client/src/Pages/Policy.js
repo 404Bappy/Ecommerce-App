@@ -6,7 +6,8 @@ function Policy() {
     <Layout>
       <div className="row contactus ">
         <div className="col-md-6 ">
-          <img className="rounded"
+          <img
+            className="rounded"
             src="/images/Ecommerce-Privacy.jpg"
             alt="contactus"
             style={{ width: "100%" }}
