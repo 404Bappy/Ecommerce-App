@@ -3,7 +3,7 @@ import Layout from "../Components/Layout/Layout";
 
 function PageNotFound() {
   return (
-    <Layout>
+    <Layout title={'Page Not Found'}>
       <h1>Page not Found</h1>
 
       <>
