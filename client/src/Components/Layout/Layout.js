@@ -22,4 +22,10 @@ const Layout = ({ children, title, description, keywords, author }) => {
   );
 };
 
+Layout.defaultProps = {
+  title: "Ecommerce app",
+  description: "Ecommerce App Using Mern Stack",
+  keywords: 'mern,react,node,mongodb,express,bootstrap,'
+};
+
 export default Layout;
