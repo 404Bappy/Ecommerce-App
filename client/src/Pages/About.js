@@ -3,10 +3,11 @@ import Layout from "../Components/Layout/Layout";
 
 function About() {
   return (
-    <Layout>
+    <Layout title={"About us - Ecommerce app"}>
       <div className="row contactus ">
         <div className="col-md-6 ">
-          <img className="rounded"
+          <img
+            className="rounded"
             src="/images/about.jpeg"
             alt="contactus"
             style={{ width: "100%" }}
