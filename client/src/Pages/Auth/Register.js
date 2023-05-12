@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../Components/Layout/Layout";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   return (
     <Layout title={"Register - Ecommerce App"}>
       <div className="register">
@@ -24,7 +26,6 @@ const Register = () => {
             />
           </div>
           <div className="mb-3">
-           
             <input
               type="password"
               className="form-control"
@@ -33,7 +34,6 @@ const Register = () => {
             />
           </div>
           <div className="mb-3">
-           
             <input
               type="text"
               className="form-control"
@@ -42,7 +42,6 @@ const Register = () => {
             />
           </div>
           <div className="mb-3">
-           
             <input
               type="text"
               className="form-control"
