@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../Components/Layout/Layout";
 import {
-  BiBorderRadius,
+
   BiMailSend,
   BiPhoneCall,
   BiSupport,
