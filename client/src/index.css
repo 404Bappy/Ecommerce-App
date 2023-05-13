@@ -128,6 +128,10 @@ body {
   margin-bottom: 15px;
   font-weight: bold;
   font-family: "Playfair Display", serif;
+  background-color: rgb(173, 8, 173);
+  color: aliceblue;
+  padding: 4PX;
+  border-radius: 5PX;
 }
 
 .form-container form input {
@@ -144,3 +148,4 @@ body {
   width: 260px;
   border-radius: 5px;
 }
+
