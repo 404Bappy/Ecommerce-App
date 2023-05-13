@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import Layout from "../../Components/Layout/Layout";
 
 const Register = () => {
@@ -11,6 +12,7 @@ const Register = () => {
   const handleSumbit = (e) => {
     e.preventDefault();
     console.log(name, email, password, phone, address);
+    toast.success("Register Successfully");
   };
 
   return (
