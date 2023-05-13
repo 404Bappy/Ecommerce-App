@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../Components/Layout/Layout";
 
@@ -23,8 +23,8 @@ const Register = () => {
         address,
       });
 
-      if (res.data.success) {
-        toast.success(res.data.message);
+      if (res && res.data.success) {
+        toast.success(res.data && res.data.message);
         navigate("/login");
       } else {
         toast.error(res.data.message);
@@ -37,9 +37,9 @@ const Register = () => {
 
   return (
     <Layout title={"Register - Ecommerce App"}>
-      <div className="register">
-        <h1>fhdfsghdsghsdghgdfh</h1>
-        <form onSubmit={handleSumbit}>
+      <div className="form-container">
+        <form className="form" onSubmit={handleSumbit}>
+          <h4 className="title">REGISTER FORM</h4>
           <div className="mb-3">
             <input
               type="text"
