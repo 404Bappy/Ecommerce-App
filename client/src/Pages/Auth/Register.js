@@ -37,7 +37,7 @@ const Register = () => {
 
   return (
     <Layout title={"Register - Ecommerce App"}>
-      <div className="form-container">
+      <div className="form-container" style={{ minHeight: "90vh" }}>
         <form className="form" onSubmit={handleSumbit}>
           <h4 className="title">REGISTER FORM</h4>
           <div className="mb-3">
@@ -97,7 +97,7 @@ const Register = () => {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Submit
+            REGISTER
           </button>
         </form>
       </div>
