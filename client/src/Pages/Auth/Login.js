@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import { useAuth } from "../../context/auth";
 import Layout from "../../Components/Layout/Layout";
 
 const Login = () => {
