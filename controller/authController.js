@@ -142,6 +142,12 @@ export const forgotPasswordController = async (req, res) => {
         message: "Wrong Email or Password",
       });
     }
+    const hashed = await hashedPassword(newPassword);
+    await userModel.findByIdAndUpdate(user.id, { password: hashed });
+    res.status(200).send({
+      success: true,
+      message: "Password Reset Successfully",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
