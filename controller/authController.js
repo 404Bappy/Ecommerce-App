@@ -48,6 +48,7 @@ export const registerController = async (req, res) => {
       password: hashedPassword,
       answer,
     }).save();
+
     res.status(201).send({
       success: true,
       message: "User Register Successfully Done ",
@@ -118,35 +119,29 @@ export const loginController = async (req, res) => {
 };
 
 //====================>>Forgot-Password Controller <<=====================<<
+
 export const forgotPasswordController = async (req, res) => {
   try {
     const { email, answer, newPassword } = req.body;
     if (!email) {
-      res.status(400).send({
-        message: "Email is Required",
-      });
+      res.status(400).send({ message: "Emai is required" });
     }
     if (!answer) {
-      res.status(400).send({
-        message: "answer is Required",
-      });
+      res.status(400).send({ message: "answer is required" });
     }
     if (!newPassword) {
-      res.status(400).send({
-        message: "newPassword is Required",
-      });
+      res.status(400).send({ message: "New Password is required" });
     }
-
-    //Check
+    //check
     const user = await userModel.findOne({ email, answer });
-    //Validation
+    //validation
     if (!user) {
       return res.status(404).send({
         success: false,
-        message: "Wrong Email or Password",
+        message: "Wrong Email Or Answer",
       });
     }
-    const hashed = await hashedPassword(newPassword);
+    const hashed = await hashPassword(newPassword);
     await userModel.findByIdAndUpdate(user.id, { password: hashed });
     res.status(200).send({
       success: true,
@@ -156,11 +151,13 @@ export const forgotPasswordController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Something Went Wrong",
+      message: "Something went wrong",
       error,
     });
   }
 };
+
+
 
 //====================>>test Controller (ADMIN) <<=====================<<
 export const testController = (req, res) => {
