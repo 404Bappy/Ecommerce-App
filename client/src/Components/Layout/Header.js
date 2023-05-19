@@ -76,14 +76,16 @@ const Header = () => {
                           Dashboard
                         </NavLink>
                       </li>
-                      <NavLink
-                        onClick={handleLogout}
-                        to="/login"
-                        className="nav-link"
-                        href="#"
-                      >
-                        Logout
-                      </NavLink>
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login"
+                          className="dropdown-item"
+                          href="#"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
                     </ul>
                   </li>
                 </>
