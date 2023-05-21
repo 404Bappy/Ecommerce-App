@@ -2,7 +2,9 @@ import express from "express";
 
 import {
   categoryController,
+  deleteCategoryController,
   getallCategoryController,
+  singleCategoryController,
   updateCategoryController,
 } from "../controller/categoryController.js";
 import { isAdmin, requireSignIn } from "../middleWares/authMiddleware.js";
@@ -24,4 +26,14 @@ router.put(
 //==============>> Get All Category <<==================//
 router.get("/getall-category", getallCategoryController);
 
+//===============>> Single Category << ==================//
+router.get("/single-category/:slug", singleCategoryController);
+
+///==================>> Delete Category <<< =================//
+router.delete(
+  "/delete-category/:id",
+  requireSignIn,
+  isAdmin,
+  deleteCategoryController
+);
 export default router;
