@@ -3,7 +3,7 @@ import Layout from "../../Components/Layout/Layout";
 import UserMenu from "../../Components/Layout/UserMenu";
 import { useAuth } from "../../context/auth";
 const Dashboard = () => {
-  const [auth] = useAuth();
+  const[auth] = useAuth();
   return (
     <Layout title={" Dashboard - Ecommerce App"}>
       <div className="container-fluid m-3 p-3">
