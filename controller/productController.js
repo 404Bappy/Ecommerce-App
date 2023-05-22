@@ -46,4 +46,48 @@ export const createProductController = async (req, res) => {
 };
 
 // Get All Products//
-export const getProductController = () => {};
+export const getProductController = async (req, res) => {
+  try {
+    const product = await productModel
+      .find({})
+      .populate("category")
+      .select("-photo")
+      .limit(20)
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      totalCount: product.length,
+      message: "AllProducts",
+      product,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error is Getting Product",
+      error,
+    });
+  }
+};
+
+///=====>> GET single Product <<=============//
+export const getSingleProductController = async (req, res) => {
+  try {
+    const product = await productModel
+      .findOne({ slug: req.params.slug })
+      .select("-photo")
+      ?.populate("category");
+    res.status(200).send({
+      success: true,
+      message: "Single Product Fatched",
+      product,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error While Gertting Single Product",
+      error,
+    });
+  }
+};
