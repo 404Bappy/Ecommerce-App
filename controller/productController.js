@@ -1,6 +1,7 @@
 import productModel from "../models/productModel.js";
 import fs from "fs";
 import slugify from "slugify";
+import router from "../routes/productRoutes.js";
 
 export const createProductController = async (req, res) => {
   try {
@@ -18,7 +19,7 @@ export const createProductController = async (req, res) => {
         return res.status(500).send({ error: "Category Is Required" });
       case !quantity:
         return res.status(500).send({ error: "Quantity Is Required" });
-      case photo && photo.size > 10000:
+      case photo: //&& photo.size > 10000
         return res
           .status(500)
           .send({ error: "Photo Is Required and Should Be Less Then 1 MB" });
@@ -26,12 +27,13 @@ export const createProductController = async (req, res) => {
     const product = new productModel({ ...req.fields, slug: slugify(name) });
     if (photo) {
       product.photo.data = fs.readFileSync(photo.path);
-      product.contentType = photo.type;
+      product.photo.contentType = photo.type;
     }
     await product.save();
     res.status(201).send({
       success: true,
       message: "Product Created SccessFully",
+      product,
     });
   } catch (error) {
     console.log(error);
@@ -42,3 +44,6 @@ export const createProductController = async (req, res) => {
     });
   }
 };
+
+// Get All Products//
+export const getProductController = () => {};
