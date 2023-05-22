@@ -76,7 +76,7 @@ export const getSingleProductController = async (req, res) => {
     const product = await productModel
       .findOne({ slug: req.params.slug })
       .select("-photo")
-      ?.populate("category");
+      .populate("category");
     res.status(200).send({
       success: true,
       message: "Single Product Fatched",
@@ -91,3 +91,7 @@ export const getSingleProductController = async (req, res) => {
     });
   }
 };
+
+//Get Photo Controller//
+
+export const productPhotoController = () => {};
