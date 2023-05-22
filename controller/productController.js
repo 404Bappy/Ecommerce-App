@@ -4,8 +4,7 @@ import slugify from "slugify";
 
 export const createProductController = async (req, res) => {
   try {
-    const { name, slug, description, price, category, quantity, shipping } =
-      req.fields;
+    const { name, description, price, category, quantity } = req.fields;
     const { photo } = req.files;
     //Validation//
     switch (true) {
@@ -25,6 +24,15 @@ export const createProductController = async (req, res) => {
           .send({ error: "Photo Is Required and Should Be Less Then 1 MB" });
     }
     const product = new productModel({ ...req.fields, slug: slugify(name) });
+    if (photo) {
+      product.photo.data = fs.readFileSync(photo.path);
+      product.contentType = photo.type;
+    }
+    await product.save();
+    res.status(201).send({
+      success: true,
+      message: "Product Created SccessFully",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
