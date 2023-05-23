@@ -11,9 +11,9 @@ const CreateCategory = () => {
   //Get All Categories//
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get("/api/v1/category/getall-category");
       if (data.success) {
-        setCategories(data);
+        setCategories(data.category);
       }
     } catch (error) {
       console.log(error);
@@ -33,7 +33,29 @@ const CreateCategory = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9 ">
-            <h1>Create CreateCategory</h1>
+            <h1>Manage Category</h1>
+            <div className="w-75">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {categories.map((c) => (
+                    <>
+                      <tr>
+                        <td key={c.id}>{c.name}</td>
+                        <td>
+                          <button className="btn btn-primary">Edit</button>
+                        </td>
+                      </tr>
+                    </>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
