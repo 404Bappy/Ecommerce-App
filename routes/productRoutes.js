@@ -20,8 +20,8 @@ router.post(
   formidable(),
   createProductController
 );
-router.post(
-  "/update-product",
+router.put(
+  "/update-product/:pid",
   requireSignIn,
   isAdmin,
   formidable(),
