@@ -17,7 +17,8 @@ const CreateCategory = () => {
         name,
       });
       if (data?.success) {
-        toast.success(`${data.name} is Created`);
+        toast.success(`${name} is Created`);
+        getAllCategory();
       } else {
         toast.error(data.message);
       }
@@ -74,7 +75,10 @@ const CreateCategory = () => {
                       <tr>
                         <td key={c.id}>{c.name}</td>
                         <td>
-                          <button className="btn btn-primary">Edit</button>
+                          <button className="btn btn-success ms-2">Edit</button>
+                          <button className="btn btn-danger ms-2">
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     </>
