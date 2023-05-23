@@ -2,11 +2,30 @@ import axios from "axios";
 import { get } from "mongoose";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import CategoryForm from "../../Components/Form/CategoryForm";
 import AdminMenu from "../../Components/Layout/AdminMenu";
 import Layout from "../../Components/Layout/Layout";
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
+  const [name, setName] = useState("");
+  //Handle Form Submit//
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post("/api/v1/category/create-category", {
+        name,
+      });
+      if (data?.success) {
+        toast.success(`${data.name} is Created`);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something Went Wrong In Input Form");
+    }
+  };
 
   //Get All Categories//
   const getAllCategory = async () => {
@@ -34,6 +53,13 @@ const CreateCategory = () => {
           </div>
           <div className="col-md-9 ">
             <h1>Manage Category</h1>
+            <div className="p-3">
+              <CategoryForm
+                handleSubmit={handleSubmit}
+                value={name}
+                setValue={setName}
+              />
+            </div>
             <div className="w-75">
               <table className="table">
                 <thead>
