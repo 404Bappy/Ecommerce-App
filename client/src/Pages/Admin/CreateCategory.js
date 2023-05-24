@@ -12,6 +12,8 @@ const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [visible, setVisible] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [updatedName, setUpdatedName] = useState("");
   //Handle Form Submit//
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +50,29 @@ const CreateCategory = () => {
     getAllCategory();
   }, []);
 
+  // Update Category//
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.put(
+        `/api/v1/category/update-category/${selected._id}`,
+        { name: updatedName }
+      );
+      if (data.success) {
+        toast.success(`${updatedName} Is Updated`);
+        setSelected(null);
+        setUpdatedName("");
+        setVisible(false);
+        getAllCategory();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something Wnt Wrong");
+    }
+  };
+
   return (
     <Layout title={"Dashboard - Create Category"}>
       <div className="container-fluid m-3 p-3">
@@ -80,7 +105,11 @@ const CreateCategory = () => {
                         <td>
                           <button
                             className="btn btn-success ms-2"
-                            onClick={() => setVisible(true)}
+                            onClick={() => {
+                              setVisible(true);
+                              setUpdatedName(c.name);
+                              setSelected(c);
+                            }}
                           >
                             Edit
                           </button>
@@ -98,7 +127,13 @@ const CreateCategory = () => {
               onCancel={() => setVisible(false)}
               footer={null}
               visible={visible}
-            />
+            >
+              <CategoryForm
+                value={updatedName}
+                setValue={setUpdatedName}
+                handleSubmit={handleUpdate}
+              />
+            </Modal>
           </div>
         </div>
       </div>
