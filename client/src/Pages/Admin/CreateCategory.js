@@ -5,10 +5,13 @@ import toast from "react-hot-toast";
 import CategoryForm from "../../Components/Form/CategoryForm";
 import AdminMenu from "../../Components/Layout/AdminMenu";
 import Layout from "../../Components/Layout/Layout";
+import {} from "antd";
+import Modal from "antd/es/modal/Modal";
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
+  const [visible, setVisible] = useState(false);
   //Handle Form Submit//
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,7 +78,12 @@ const CreateCategory = () => {
                       <tr>
                         <td key={c.id}>{c.name}</td>
                         <td>
-                          <button className="btn btn-success ms-2">Edit</button>
+                          <button
+                            className="btn btn-success ms-2"
+                            onClick={() => setVisible(true)}
+                          >
+                            Edit
+                          </button>
                           <button className="btn btn-danger ms-2">
                             Delete
                           </button>
@@ -86,6 +94,11 @@ const CreateCategory = () => {
                 </tbody>
               </table>
             </div>
+            <Modal
+              onCancel={() => setVisible(false)}
+              footer={null}
+              visible={visible}
+            />
           </div>
         </div>
       </div>
