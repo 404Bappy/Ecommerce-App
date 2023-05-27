@@ -3,7 +3,8 @@ import AdminMenu from "../../Components/Layout/AdminMenu";
 import Layout from "../../Components/Layout/Layout";
 
 const CreateProduct = () => {
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [photo, setPhoto] = useState("");
   return (
     <Layout title={"Dashboard - Create Product"}>
       <div className="container-fluid m-3 p-3">
