@@ -4,10 +4,12 @@ import toast from "react-hot-toast";
 import AdminMenu from "../../Components/Layout/AdminMenu";
 import Layout from "../../Components/Layout/Layout";
 import { Select } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
 const CreateProduct = () => {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -34,6 +36,33 @@ const CreateProduct = () => {
     getAllCategory();
   }, []);
 
+  // Handle Create Product
+  const handleCreateProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const productData = new FormData();
+      productData.append("name", name);
+      productData.append("description", description);
+      productData.append("price", price);
+      productData.append("quantity", quantity);
+      productData.append("photo", photo);
+      productData.append("category", category);
+      const { data } = axios.post(
+        "/api/v1/product/create-product",
+        productData
+      );
+      if (data?.success) {
+        toast.error(data?.message);
+      } else {
+        toast.success("Product Created Successfully");
+        navigate("/dashboard/admin/products");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("something went wrong");
+    }
+  };
+
   return (
     <Layout title={"Dashboard - Create Product"}>
       <div className="container-fluid m-3 p-3">
@@ -55,7 +84,7 @@ const CreateProduct = () => {
                 }}
               >
                 {categories?.map((c) => (
-                  <Option key={c.id} value={c.name}>
+                  <Option key={c._id} value={c._id}>
                     {c.name}
                   </Option>
                 ))}
@@ -133,6 +162,11 @@ const CreateProduct = () => {
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </Select>
+            </div>
+            <div className="mb-3">
+              <button className="btn btn-primary" onClick={handleCreateProduct}>
+                CREATE PRODUCT
+              </button>
             </div>
           </div>
         </div>
