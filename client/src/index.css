@@ -18,7 +18,7 @@ font-family: 'Poppins', sans-serif; */
   box-shadow: 0 8px 6px -6px gray;
   --webkit-box-shadow: 0 8px 6px -6px gray;
   border-bottom: 0.3px solid gray !important;
-  background-color: #5cb55c;
+  background-color: #689f38;
 }
 
 .nav-link {
@@ -47,7 +47,7 @@ font-family: 'Poppins', sans-serif; */
 .footer {
   color: rgb(4, 0, 0);
   padding: 25px;
-  background: linear-gradient(to right, #2fd02f, #5cb55c);
+  background: linear-gradient(to right, #689f38, #5cb55c);
 }
 
 .footer a {
