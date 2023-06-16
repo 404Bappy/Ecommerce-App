@@ -148,3 +148,9 @@ body {
   width: 260px;
   border-radius: 5px;
 }
+
+/* PRODUCT LINK  */
+.product-link {
+  text-decoration: none !important;
+  color: black !important;
+}
