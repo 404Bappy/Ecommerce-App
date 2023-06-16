@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 
-const CreateProduct = () => {
+const UpdateProduct = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -62,7 +62,6 @@ const CreateProduct = () => {
       toast.error("something went wrong");
     }
   };
-
   return (
     <Layout title={"Dashboard - Create Product"}>
       <div className="container-fluid m-3 p-3">
@@ -175,4 +174,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;
