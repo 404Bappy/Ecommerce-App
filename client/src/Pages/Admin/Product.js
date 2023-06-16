@@ -28,11 +28,19 @@ const Product = () => {
         <div className="col-md-3">
           <AdminMenu />
         </div>
-        <div className="col-md-9">
+        <div className="col-md-9 ">
           <h1 className="text-center">All Product List</h1>
-          {
-              
-          }
+          <div className="d-flex">
+            {product?.map((p) => (
+              <div className="card" style={{ width: "18rem" }} key={p._id}>
+                <img src={p.photo} className="card-img-top" alt={p.name} />
+                <div className="card-body">
+                  <h5 className="card-title">{p.name}</h5>
+                  <p className="card-text">{p.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
