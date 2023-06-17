@@ -420,7 +420,7 @@ const UpdateProduct = () => {
                   onChange={(value) => {
                     setShipping(value);
                   }}
-                  value={shipping ? "yes" : "No"}
+                  value={shipping ? "Yes" : "No"}
                 >
                   <Option value="0">No</Option>
                   <Option value="1">Yes</Option>
