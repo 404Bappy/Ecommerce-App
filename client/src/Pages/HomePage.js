@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import Layout from "../Components/Layout/Layout";
 
 import axios from "axios";
-import { Checkbox } from "antd";
+import { Checkbox, Radio } from "antd";
+import { Price } from "../Components/Price";
 
 function HomePage() {
   const [product, setProduct] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
+  const [radio, setRadio] = useState([]);
 
   //GET ALL CATEGORY//
   const getAllCategory = async () => {
@@ -47,14 +49,32 @@ function HomePage() {
   };
 
   useEffect(() => {
-    getAllProducts();
-  });
+    if (!checked.length || !radio.length) getAllProducts();
+    //eslint-disable-next-line
+  }, [checked.length, radio.length]);
+
+  useEffect(() => {
+    if (checked.length || radio.length) filterProduct();
+  }, [checked, radio]);
+
+  //GET FILTERED PRODUCTS//
+  const filterProduct = async () => {
+    try {
+      const { data } = await axios.post("/api/v1/product/product-filter", {
+        checked,
+        radio,
+      });
+      setProduct(data?.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Layout title={"All Productsc - Best Offers"}>
       <div className="row mt-3">
         <div className="col-md-2">
-          <h4 className="text-center">Filter by Category</h4>
+          <h4 className="text-center mt-4 ">Filter by Category</h4>
           <div className="d-flex flex-column">
             {categories?.map((c) => (
               <Checkbox
@@ -65,9 +85,20 @@ function HomePage() {
               </Checkbox>
             ))}
           </div>
+          {/* FILTER BY PRICES  */}
+          <h4 className="text-center mt-4 ">Filter by Price</h4>
+          <div className="d-flex flex-column">
+            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+              {Price?.map((p) => (
+                <div key={p._id}>
+                  <Radio value={p.array}>{p.name}</Radio>
+                </div>
+              ))}
+            </Radio.Group>
+          </div>
         </div>
         <div className="col-md-9">
-          {JSON.stringify(checked,null,4)}
+          {JSON.stringify(checked, null, 4)}
           <h1 className="text-center">All Product</h1>
           <div className="d-flex flex-wrap">
             {product?.map((p) => (
@@ -79,7 +110,8 @@ function HomePage() {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">{p.description}</p>
+                  <p className="card-text">{p.description.substring(0, 30)}</p>
+                  <p className="card-text">$ {p.price}</p>
                   <button class="btn btn-primary ms-1">More Details</button>
                   <button class="btn btn-secondary ms-1">Add To Cart</button>
                 </div>
