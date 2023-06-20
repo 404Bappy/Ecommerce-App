@@ -199,3 +199,5 @@ export const productFilterController = async (req, res) => {
     });
   }
 };
+
+//Product Count

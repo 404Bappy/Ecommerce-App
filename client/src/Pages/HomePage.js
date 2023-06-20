@@ -96,6 +96,14 @@ function HomePage() {
               ))}
             </Radio.Group>
           </div>
+          <div className="d-flex flex-column">
+            <button
+              className="btn btn-danger"
+              onClick={() => window.location.reload()}
+            >
+              RSET FILTERS
+            </button>
+          </div>
         </div>
         <div className="col-md-9">
           <h1 className="text-center">All Product</h1>
