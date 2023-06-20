@@ -98,7 +98,6 @@ function HomePage() {
           </div>
         </div>
         <div className="col-md-9">
-          
           <h1 className="text-center">All Product</h1>
           <div className="d-flex flex-wrap">
             {product?.map((p) => (
@@ -110,10 +109,24 @@ function HomePage() {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">{p.description.substring(0, 30)}</p>
-                  <p className="card-text text-bolder" style={{color:'#ff4081', fontWight: 'bold'}}>$ {p.price}</p>
-                  <button style={{backgroundColor:'#689f38',color:'white' }} class="btn  ms-1">More Details</button>
-                  <button sty class="btn btn-secondary ms-1">Add To Cart</button>
+                  <p className="card-text">
+                    {p.description.substring(0, 30)}...
+                  </p>
+                  <p
+                    className="card-text text-bolder"
+                    style={{ color: "#ff4081", fontWight: "bold" }}
+                  >
+                    $ {p.price}
+                  </p>
+                  <button
+                    style={{ backgroundColor: "#689f38", color: "white" }}
+                    class="btn  ms-1"
+                  >
+                    More Details
+                  </button>
+                  <button sty class="btn btn-secondary ms-1">
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             ))}
