@@ -12,7 +12,7 @@ function HomePage() {
   const [radio, setRadio] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   //GET ALL CATEGORY//
   const getAllCategory = async () => {
@@ -37,7 +37,7 @@ function HomePage() {
       setLoading(true);
       const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
       setLoading(false);
-      setProduct(data.product);
+      setProduct(data.products);
     } catch (error) {
       setLoading(false);
       console.log(error);
