@@ -231,13 +231,26 @@ export const productListController = async (req, res) => {
       .sort({ createdAt: -1 });
     res.status(200).send({
       success: true,
-      products, 
+      products,
     });
   } catch (error) {
     console.log(error);
     res.status(400).send({
       success: false,
       message: "error in per page control",
+      error,
+    });
+  }
+};
+
+//Search Product
+export const searchProductController = async (req, res) => {
+  try {
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "Error in Search Product API",
       error,
     });
   }
