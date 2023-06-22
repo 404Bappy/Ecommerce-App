@@ -53,4 +53,7 @@ router.get("/product-count", productCountController);
 //Product Per Page//
 router.get('/product-list/:page', productListController)
 
+//Search Product//
+router.get('/search',searchProductController)
+
 export default router;
