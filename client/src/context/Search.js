@@ -1,11 +1,33 @@
-import React from "react";
+// import React from "react";
 
-const Search = () => {
+// const Search = () => {
+//   return (
+//     <section>
+//       <h1>Search Here </h1>
+//     </section>
+//   );
+// };
+
+// export default Search;
+
+import { useState, useContext, createContext } from "react";
+
+const SearchContext = createContext();
+
+const SearchProvider = ({ children }) => {
+  const [auth, setAuth] = useState({
+    keyword: "",
+    results: [],
+  });
+
   return (
-    <section>
-      <h1>Search Here </h1>
-    </section>
+    <SearchContext.Provider value={[auth, setAuth]}>
+      {children}
+    </SearchContext.Provider>
   );
 };
 
-export default Search;
+// Custom Hook
+const useSearch = () => useContext(SearchContext);
+
+export { useSearch, SearchProvider };
